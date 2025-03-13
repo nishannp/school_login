@@ -2,14 +2,12 @@
 session_start();
 require_once 'config.php';
 
-// Check if user is logged in
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    // Redirect to login page
     header("Location: index.php");
     exit;
 }
 
-// Get user info from database
+
 $user_id = $_SESSION['user_id'];
 $user_query = "SELECT * FROM users WHERE user_id = ?";
 $user_stmt = $conn->prepare($user_query);
@@ -20,19 +18,17 @@ $user_result = $user_stmt->get_result();
 if ($user_result->num_rows === 1) {
     $user = $user_result->fetch_assoc();
     
-    // Update last login timestamp
     $update_login = "UPDATE users SET last_login = NOW() WHERE user_id = ?";
     $update_stmt = $conn->prepare($update_login);
     $update_stmt->bind_param("i", $user_id);
     $update_stmt->execute();
 } else {
-    // Something went wrong, redirect to login
+    
     session_destroy();
     header("Location: index.php");
     exit;
 }
-
-// Sample event data - in a real app, this would come from database
+// demo event sample, later we will gonna replace with actual database data and we will make the whole process automatic
 $events = [
     [
         'id' => 1,
@@ -90,9 +86,8 @@ $events = [
     ]
 ];
 
-// Get user's saved/favorite events - in a real app, this would come from database
-// For now, we'll just use sample data
-$user_events = [1, 3, 5]; // Event IDs that the user has saved
+// demo saved user events for now 
+$user_events = [1, 3, 5]; 
 ?>
 
 <!DOCTYPE html>
@@ -101,14 +96,9 @@ $user_events = [1, 3, 5]; // Event IDs that the user has saved
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - University Open Day</title>
-    
-    <!-- Bootstrap CSS -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -747,7 +737,6 @@ $user_events = [1, 3, 5]; // Event IDs that the user has saved
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -805,8 +794,6 @@ $user_events = [1, 3, 5]; // Event IDs that the user has saved
             </div>
         </div>
     </nav>
-    
-    <!-- Welcome Banner -->
     <div class="welcome-banner">
         <div class="container">
             <h1 class="welcome-title">Welcome to University Open Day, <?php echo $user['first_name']; ?>!</h1>
@@ -840,8 +827,6 @@ $user_events = [1, 3, 5]; // Event IDs that the user has saved
                 </div>
             </div>
         </div>
-        
-        <!-- User Profile Section -->
         <div class="row">
             <div class="col-lg-4">
                 <div class="user-profile">
@@ -896,7 +881,6 @@ $user_events = [1, 3, 5]; // Event IDs that the user has saved
             </div>
             
             <div class="col-lg-8">
-                <!-- Events Tabs -->
                 <ul class="nav nav-tabs event-tabs mb-4" id="eventTabs" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="all-events-tab" data-bs-toggle="tab" data-bs-target="#all-events" type="button" role="tab" aria-controls="all-events" aria-selected="true">
@@ -911,7 +895,6 @@ $user_events = [1, 3, 5]; // Event IDs that the user has saved
                 </ul>
                 
                 <div class="tab-content" id="eventTabsContent">
-                    <!-- All Events Tab -->
                     <div class="tab-pane fade show active" id="all-events" role="tabpanel" aria-labelledby="all-events-tab">
                         <h3 class="section-title">All Available Events</h3>
                         
@@ -945,8 +928,7 @@ $user_events = [1, 3, 5]; // Event IDs that the user has saved
                             <?php endforeach; ?>
                         </div>
                     </div>
-                    
-                    <!-- My Events Tab -->
+
                     <div class="tab-pane fade" id="my-events" role="tabpanel" aria-labelledby="my-events-tab">
                         <h3 class="section-title">My Saved Events</h3>
                         
@@ -992,7 +974,6 @@ $user_events = [1, 3, 5]; // Event IDs that the user has saved
             </div>
         </div>
         
-        <!-- Campus Map Section -->
         <section id="map" class="my-5">
             <h3 class="section-title">Campus Map</h3>
             <div class="map-container">
@@ -1027,7 +1008,7 @@ $user_events = [1, 3, 5]; // Event IDs that the user has saved
         </section>
     </div>
     
-    <!-- Footer -->
+
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -1085,7 +1066,6 @@ $user_events = [1, 3, 5]; // Event IDs that the user has saved
         </div>
     </footer>
     
-    <!-- Notifications Modal -->
     <div class="modal fade" id="notificationsModal" tabindex="-1" aria-labelledby="notificationsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -1126,36 +1106,24 @@ $user_events = [1, 3, 5]; // Event IDs that the user has saved
         </div>
     </div>
     
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Countdown timer
+      
         function updateCountdown() {
-            // Set the date we're counting down to (2 weeks from now for demo)
             const openDayDate = new Date();
             openDayDate.setDate(openDayDate.getDate() + 14);
-            openDayDate.setHours(8, 0, 0, 0); // 8:00 AM
-            
-            // Get current time
+            openDayDate.setHours(8, 0, 0, 0); 
             const now = new Date().getTime();
-            
-            // Find the distance between now and the countdown date
             const distance = openDayDate - now;
-            
-            // Time calculations for days, hours, minutes and seconds
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            // Update elements
             document.getElementById("days").innerHTML = days;
             document.getElementById("hours").innerHTML = hours;
             document.getElementById("minutes").innerHTML = minutes;
             document.getElementById("seconds").innerHTML = seconds;
-            
-            // If the countdown is finished, show some text
             if (distance < 0) {
                 clearInterval(countdownInterval);
                 document.getElementById("days").innerHTML = "0";
@@ -1164,12 +1132,9 @@ $user_events = [1, 3, 5]; // Event IDs that the user has saved
                 document.getElementById("seconds").innerHTML = "0";
             }
         }
-        
-        // Update countdown every second
         updateCountdown();
         const countdownInterval = setInterval(updateCountdown, 1000);
-        
-        // Event favorite toggle
+
         document.querySelectorAll('.btn-favorite').forEach(button => {
             button.addEventListener('click', function() {
                 const eventId = this.getAttribute('data-event-id');
@@ -1177,25 +1142,20 @@ $user_events = [1, 3, 5]; // Event IDs that the user has saved
                 
                 if (this.classList.contains('active')) {
                     this.innerHTML = '<i class="fas fa-heart"></i>';
-                    // Here you would make an AJAX call to save the event
                     console.log('Event ' + eventId + ' added to favorites');
                 } else {
                     this.innerHTML = '<i class="far fa-heart"></i>';
-                    // Here you would make an AJAX call to remove the event
                     console.log('Event ' + eventId + ' removed from favorites');
                 }
             });
         });
         
-        // Event schedule buttons
+        // Add to schedule button click event listener dummy for now
         document.querySelectorAll('.add-to-schedule').forEach(button => {
             button.addEventListener('click', function(e) {
                 e.preventDefault();
                 const eventId = this.getAttribute('data-event-id');
-                // Here you would make an AJAX call to add the event to schedule
                 console.log('Event ' + eventId + ' added to schedule');
-                
-                // For demo purposes, just show an alert
                 alert('Event added to your schedule!');
             });
         });
@@ -1204,13 +1164,8 @@ $user_events = [1, 3, 5]; // Event IDs that the user has saved
             button.addEventListener('click', function(e) {
                 e.preventDefault();
                 const eventId = this.getAttribute('data-event-id');
-                // Here you would make an AJAX call to remove the event from schedule
                 console.log('Event ' + eventId + ' removed from schedule');
-                
-                // For demo purposes, just remove the card
                 this.closest('.col-md-6').remove();
-                
-                // Check if there are any cards left
                 const myEventsTab = document.getElementById('my-events');
                 if (myEventsTab.querySelectorAll('.card').length === 0) {
                     myEventsTab.querySelector('.row').innerHTML = `

@@ -1,24 +1,24 @@
 <?php
-// Start the session
+
 session_start();
 
-// Check if user is actually logged in
+
 if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    // If not logged in, redirect to login page
+   
     header("Location: index.php");
     exit;
 }
 
-// Initialize message variables
+
 $message = "";
 $messageType = "";
 
-// Process logout
+
 if (isset($_POST['logout'])) {
-    // Unset all session variables
+    // destryoing all of the session variable that we have set while login or signup
     $_SESSION = array();
     
-    // If a session cookie is used, delete it
+ 
     if (ini_get("session.use_cookies")) {
         $params = session_get_cookie_params();
         setcookie(session_name(), '', time() - 42000,
@@ -27,15 +27,15 @@ if (isset($_POST['logout'])) {
         );
     }
     
-    // Destroy the session
+    
     session_destroy();
     
-    // Set success message
+   
     $message = "You have been successfully logged out.";
     $messageType = "success";
     
-    // Redirect to login page after a short delay
-    header("refresh:3;url=login.php");
+    // after click on logut this will send back user to login page after total 3 seconds
+    header("refresh:3;url=index.php");
 }
 ?>
 
@@ -279,7 +279,7 @@ if (isset($_POST['logout'])) {
             </div>
         </div>
         <div class="footer">
-            &copy; <?php echo date("Y"); ?> Your Website | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            &copy; <?php echo date("Y"); ?> University Open Day | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
         </div>
     </div>
 </body>

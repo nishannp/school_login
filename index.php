@@ -5,22 +5,22 @@ $success = "";
 
 require_once 'config.php';
 
-// Check if user is already logged in
+
 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     header("Location: dashboard.php");
     exit;
 }
 
-// Process login form submission
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
     $password = $_POST['password'];
     
-    // Validate input
+    
     if (empty($username) || empty($password)) {
         $error = "Please enter both username and password";
     } else {
-        // Check if username exists and verify password
+        
         $query = "SELECT * FROM users WHERE username = ? OR email = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("ss", $username, $username);
@@ -31,12 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user = $result->fetch_assoc();
             
             if (password_verify($password, $user['password_hash'])) {
-                // Password is correct, set session variables
+                // setting session variable after successful login
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['logged_in'] = true;
                 
-                // Set success message and redirect
+                // redirecting user to dashboard after successfull login 
                 $success = "Login successful! Redirecting to dashboard...";
                 header("refresh:2;url=dashboard.php");
             } else {
@@ -55,13 +55,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - University Open Day</title>
     
-    <!-- Bootstrap CSS -->
+ 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Font Awesome -->
+ 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- Google Fonts -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -449,7 +449,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             to { transform: rotate(360deg); }
         }
         
-        /* Password Recovery Modal */
+        
         .modal-content {
             border-radius: 15px;
             box-shadow: var(--card-shadow);
@@ -526,7 +526,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
-    <!-- Background Circles Animation -->
+    
     <ul class="circles">
         <li></li>
         <li></li>
@@ -540,7 +540,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <li></li>
     </ul>
     
-    <!-- Loading Animation -->
+
     <div class="loading" id="loading">
         <div class="spinner"></div>
     </div>
@@ -548,7 +548,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">
         <div class="login-container">
             <div class="row">
-                <!-- Left Side - Image -->
+                
                 <div class="col-lg-6 image-side">
                     <div class="image-content text-center">
                         <h1 class="display-4 mb-4">Welcome Back!</h1>
@@ -557,7 +557,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
                 
-                <!-- Right Side - Form -->
+                
                 <div class="col-lg-6 form-side">
                     <h2 class="form-title">Sign In</h2>
                     <p class="form-subtitle">Access your account to explore our university's Open Day events.</p>
@@ -632,7 +632,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
     
-    <!-- Forgot Password Modal -->
+    
     <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -669,18 +669,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
     
-    <!-- Bootstrap JS Bundle with Popper -->
+ 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Form submission loading state
+       
         document.getElementById('loginForm').addEventListener('submit', function() {
             document.getElementById('loading').style.display = 'flex';
             document.getElementById('submitBtn').disabled = true;
             document.getElementById('submitBtn').innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Signing in...';
         });
         
-        // Toggle password visibility
+        
         const togglePassword = () => {
             const passwordField = document.getElementById('password');
             if (passwordField.type === 'password') {
@@ -690,13 +690,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         };
         
-        // Animation for "I Remember Now" button
+        
         document.getElementById('rememberBtn').addEventListener('click', function() {
             const passwordField = document.getElementById('password');
             passwordField.focus();
             passwordField.classList.add('is-valid');
             
-            // Add a small animation to draw attention to the password field
+           
             setTimeout(() => {
                 passwordField.classList.remove('is-valid');
             }, 3000);

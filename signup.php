@@ -631,143 +631,144 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     
     <div class="container">
-        <div class="signup-container">
-            <div class="row">
-             
-                <div class="col-lg-6 image-side">
-                    <div class="image-content text-center">
-                        <h1 class="display-4 mb-4">Welcome!</h1>
-                        <p>Join us for an incredible Open Day experience at our university.</p>
-                        <p class="mt-4">Discover your future, meet our faculty, and explore our campus!</p>
-                    </div>
+    <div class="signup-container">
+        <div class="row">
+         
+            <div class="col-lg-6 image-side">
+                <div class="image-content text-center">
+                    <h1 class="display-4 mb-4">Welcome!</h1>
+                    <p>Join us for an incredible Open Day experience at our university.</p>
+                    <p class="mt-4">Discover your future, meet our faculty, and explore our campus!</p>
                 </div>
+            </div>
+            
+            
+            <div class="col-lg-6 form-side">
+                <h2 class="form-title">Create an Account</h2>
+                <p class="form-subtitle">Sign up to explore our university's Open Day events and create your personalized schedule.</p>
+                <p class="form-note text-muted mb-3"><small>Fields marked with <span class="text-danger">*</span> are required.</small></p>
                 
+                <?php if (!empty($error)): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <i class="fas fa-exclamation-circle me-2"></i> <?php echo $error; ?>
+                    </div>
+                <?php endif; ?>
                 
-                <div class="col-lg-6 form-side">
-                    <h2 class="form-title">Create an Account</h2>
-                    <p class="form-subtitle">Sign up to explore our university's Open Day events and create your personalized schedule.</p>
+                <?php if (!empty($success)): ?>
+                    <div class="alert alert-success" role="alert">
+                        <i class="fas fa-check-circle me-2"></i> <?php echo $success; ?>
+                    </div>
+                <?php endif; ?>
+                
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data" id="signupForm">
+                    <div class="photo-preview" id="photoPreview">
+                        <div class="placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
                     
-                    <?php if (!empty($error)): ?>
-                        <div class="alert alert-danger" role="alert">
-                            <i class="fas fa-exclamation-circle me-2"></i> <?php echo $error; ?>
-                        </div>
-                    <?php endif; ?>
+                    <div class="mb-3">
+                        <label for="profile_photo" class="form-file-label">
+                            <i class="fas fa-cloud-upload-alt me-2"></i> Choose Profile Picture <span class="text-muted">(Optional)</span>
+                        </label>
+                        <input type="file" class="form-file-input" id="profile_photo" name="profile_photo" accept="image/jpeg, image/jpg, image/png" onchange="previewImage(this)">
+                    </div>
                     
-                    <?php if (!empty($success)): ?>
-                        <div class="alert alert-success" role="alert">
-                            <i class="fas fa-check-circle me-2"></i> <?php echo $success; ?>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required>
+                                <label for="first_name"><i class="fas fa-user me-2"></i> First Name <span class="text-danger">*</span></label>
+                            </div>
                         </div>
-                    <?php endif; ?>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
+                                <label for="last_name"><i class="fas fa-user me-2"></i> Last Name <span class="text-danger">*</span></label>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data" id="signupForm">
-                        <div class="photo-preview" id="photoPreview">
-                            <div class="placeholder">
-                                <i class="fas fa-user"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="profile_photo" class="form-file-label">
-                                <i class="fas fa-cloud-upload-alt me-2"></i> Choose Profile Picture
-                            </label>
-                            <input type="file" class="form-file-input" id="profile_photo" name="profile_photo" accept="image/jpeg, image/jpg, image/png" onchange="previewImage(this)">
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required>
-                                    <label for="first_name"><i class="fas fa-user me-2"></i> First Name</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
-                                    <label for="last_name"><i class="fas fa-user me-2"></i> Last Name</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
-                            <label for="username"><i class="fas fa-user-tag me-2"></i> Username</label>
-                        </div>
-                        
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
-                            <label for="email"><i class="fas fa-envelope me-2"></i> Email Address</label>
-                        </div>
-                        
-                        <div class="form-floating mb-3">
-                            <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number">
-                            <label for="phone_number"><i class="fas fa-phone me-2"></i> Phone Number</label>
-                        </div>
-                        
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="academic_interest" name="academic_interest">
-                                <option value="" selected disabled>Select your interest</option>
-                                <option value="Business">Business & Management</option>
-                                <option value="Computer Science">Computer Science</option>
-                                <option value="Engineering">Engineering</option>
-                                <option value="Arts">Arts & Humanities</option>
-                                <option value="Medicine">Medicine & Health</option>
-                                <option value="Law">Law</option>
-                                <option value="Science">Science</option>
-                                <option value="Social Sciences">Social Sciences</option>
-                                <option value="Other">Other</option>
-                            </select>
-                            <label for="academic_interest"><i class="fas fa-graduation-cap me-2"></i> Academic Interest</label>
-                        </div>
-                        
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                            <label for="password"><i class="fas fa-lock me-2"></i> Password</label>
-                        </div>
-                        
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
-                            <label for="confirm_password"><i class="fas fa-lock me-2"></i> Confirm Password</label>
-                        </div>
-                        
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="terms" required>
-                            <label class="form-check-label" for="terms">
-                                I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</a>
-                            </label>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-signup btn-lg w-100" id="submitBtn">
-                            <i class="fas fa-user-plus me-2"></i> Sign Up
-                        </button>
-                        
-                        <div class="social-login">
-                            <div class="social-icons">
-                                <a href="#" class="social-icon facebook">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" class="social-icon google">
-                                    <i class="fab fa-google"></i>
-                                </a>
-                                <a href="#" class="social-icon twitter">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <div class="login-link">
-                            Already have an account? <a href="index.php">Log In</a>
-                        </div>
-                        
-                        <div class="guest-link">
-                            <a href="guest.php" class="btn btn-outline-secondary">
-                                <i class="fas fa-user-clock me-2"></i> Continue as Guest
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                        <label for="username"><i class="fas fa-user-tag me-2"></i> Username <span class="text-danger">*</span></label>
+                    </div>
+                    
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+                        <label for="email"><i class="fas fa-envelope me-2"></i> Email Address <span class="text-danger">*</span></label>
+                    </div>
+                    
+                    <div class="form-floating mb-3">
+                        <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number">
+                        <label for="phone_number"><i class="fas fa-phone me-2"></i> Phone Number <span class="text-muted">(Optional)</span></label>
+                    </div>
+                    
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="academic_interest" name="academic_interest">
+                            <option value="" selected disabled>Select your interest</option>
+                            <option value="Business">Business & Management</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Arts">Arts & Humanities</option>
+                            <option value="Medicine">Medicine & Health</option>
+                            <option value="Law">Law</option>
+                            <option value="Science">Science</option>
+                            <option value="Social Sciences">Social Sciences</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <label for="academic_interest"><i class="fas fa-graduation-cap me-2"></i> Academic Interest <span class="text-muted">(Optional)</span></label>
+                    </div>
+                    
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                        <label for="password"><i class="fas fa-lock me-2"></i> Password <span class="text-danger">*</span></label>
+                    </div>
+                    
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+                        <label for="confirm_password"><i class="fas fa-lock me-2"></i> Confirm Password <span class="text-danger">*</span></label>
+                    </div>
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="terms" required>
+                        <label class="form-check-label" for="terms">
+                            I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</a> <span class="text-danger">*</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-signup btn-lg w-100" id="submitBtn">
+                        <i class="fas fa-user-plus me-2"></i> Sign Up
+                    </button>
+                    
+                    <div class="social-login">
+                        <div class="social-icons">
+                            <a href="#" class="social-icon facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon google">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="#" class="social-icon twitter">
+                                <i class="fab fa-twitter"></i>
                             </a>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    
+                    <div class="login-link">
+                        Already have an account? <a href="index.php">Log In</a>
+                    </div>
+                    
+                    <div class="guest-link">
+                        <a href="guest.php" class="btn btn-outline-secondary">
+                            <i class="fas fa-user-clock me-2"></i> Continue as Guest
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
     
    
     <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">

@@ -1,10 +1,10 @@
 <?php
-// Start session
+
 session_start();
 
 require_once 'config.php';
 
-// Get visitor information
+
 $ip_address = $_SERVER['REMOTE_ADDR'];
 $user_agent = $_SERVER['HTTP_USER_AGENT'];
 $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'Direct visit';
@@ -14,7 +14,7 @@ $browser = get_browser_name($user_agent);
 $device_type = get_device_type($user_agent);
 $os = get_operating_system($user_agent);
 
-// Store visitor info in database
+
 if ($conn->connect_error == false) {
     $sql = "INSERT INTO guests (ip_address, user_agent, referer, page_url, visit_time, browser, device_type, os) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -29,7 +29,7 @@ if ($conn->connect_error == false) {
     $stmt->close();
 }
 
-// Function to detect browser name
+
 function get_browser_name($user_agent) {
     if (strpos($user_agent, 'Opera') || strpos($user_agent, 'OPR/')) return 'Opera';
     elseif (strpos($user_agent, 'Edge')) return 'Edge';
@@ -40,7 +40,7 @@ function get_browser_name($user_agent) {
     return 'Unknown';
 }
 
-// Function to detect device type
+
 function get_device_type($user_agent) {
     $mobile_agents = array('Android', 'webOS', 'iPhone', 'iPad', 'iPod', 'BlackBerry', 'Windows Phone');
     foreach ($mobile_agents as $device) {
@@ -51,7 +51,7 @@ function get_device_type($user_agent) {
     return 'Desktop';
 }
 
-// Function to detect operating system
+
 function get_operating_system($user_agent) {
     $os_platform = "Unknown";
     $os_array = array(
@@ -95,15 +95,11 @@ function get_operating_system($user_agent) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>University Open Day - Guest</title>
-    
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* Custom CSS */
+       
         :root {
             --primary-color: #1a73e8;
             --secondary-color: #4285f4;
@@ -193,7 +189,7 @@ function get_operating_system($user_agent) {
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+   
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -229,7 +225,6 @@ function get_operating_system($user_agent) {
         </div>
     </nav>
 
-    <!-- Header -->
     <header class="header text-center">
         <div class="container">
             <h1><i class="fas fa-graduation-cap me-3"></i>Welcome to Our University Open Day</h1>
@@ -245,16 +240,15 @@ function get_operating_system($user_agent) {
         </div>
     </header>
 
-    <!-- Main Content -->
     <div class="container">
-        <!-- Notifications -->
+
         <div class="alert alert-info" role="alert">
             <i class="fas fa-bullhorn me-2"></i>
             <strong>Announcement:</strong> The Computer Science talk has been moved to Room 205B at 2:30 PM.
             <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
-        <!-- Featured Events -->
+    
         <section id="featured" class="mb-5">
             <h2 class="section-title">Featured Sessions</h2>
             <div class="row">
@@ -306,7 +300,7 @@ function get_operating_system($user_agent) {
             </div>
         </section>
 
-        <!-- Events Schedule -->
+   
         <section id="events" class="mb-5">
             <h2 class="section-title">Event Schedule</h2>
             <div class="card">
@@ -385,13 +379,13 @@ function get_operating_system($user_agent) {
             </div>
         </section>
 
-        <!-- Campus Map -->
+     
         <section id="map" class="mb-5">
             <h2 class="section-title">Campus Map</h2>
             <div class="card">
                 <div class="card-body">
                     <div class="text-center mb-3">
-                        <!-- This would be replaced with an actual interactive map -->
+                      
                         <div class="bg-light p-5 rounded">
                             <i class="fas fa-map-marked-alt" style="font-size: 5rem; color: var(--primary-color);"></i>
                             <h4 class="mt-3">Interactive Campus Map</h4>
@@ -427,7 +421,7 @@ function get_operating_system($user_agent) {
             </div>
         </section>
 
-        <!-- FAQ Section -->
+       
         <section id="faq" class="mb-5">
             <h2 class="section-title">Frequently Asked Questions</h2>
             <div class="accordion" id="faqAccordion">
@@ -494,7 +488,7 @@ function get_operating_system($user_agent) {
             </div>
         </section>
 
-        <!-- Feedback Form -->
+       
         <section id="feedback" class="mb-5">
             <h2 class="section-title">Share Your Experience</h2>
             <div class="card">
@@ -546,7 +540,7 @@ function get_operating_system($user_agent) {
         </section>
     </div>
 
-    <!-- Footer -->
+    
     <footer>
         <div class="container">
             <div class="row">
@@ -562,9 +556,9 @@ function get_operating_system($user_agent) {
                 </div>
                 <div class="col-md-4 mb-4 mb-md-0">
                     <h5><i class="fas fa-phone-alt me-2"></i>Contact Us</h5>
-                    <p><i class="fas fa-envelope me-2"></i>wolverhampton@university.edu</p>
-                    <p><i class="fas fa-phone me-2"></i>(123) 0000000</p>
-                    <p><i class="fas fa-map-marker-alt me-2"></i>Wolverhampton</p>
+                    <p><i class="fas fa-envelope me-2"></i>universityopenday@gmail.com</p>
+                    <p><i class="fas fa-phone me-2"></i>(921) 0000000</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>University Open Day</p>
                 </div>
                 <div class="col-md-4">
                     <h5><i class="fas fa-link me-2"></i>Quick Links</h5>
@@ -579,36 +573,35 @@ function get_operating_system($user_agent) {
             </div>
             <hr class="mt-4 mb-4 bg-light">
             <div class="text-center">
-                <p class="mb-0">&copy; 2025 University Name. All rights reserved.</p>
+                <p class="mb-0">&copy; 2025 University Open Day. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap Bundle with Popper -->
+   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Custom JavaScript -->
+   
     <script>
-        // Add event listeners when the DOM is loaded
+       
         document.addEventListener('DOMContentLoaded', function() {
             
-            // Initialize tooltips
+          
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
             var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl);
             });
             
-            // Add to schedule functionality
             const addButtons = document.querySelectorAll('.btn-outline-primary');
             addButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // In a real app, this would add to a user's schedule
+                   
                     if (this.innerHTML.includes('Add')) {
                         this.innerHTML = '<i class="fas fa-check"></i> Added';
                         this.classList.remove('btn-outline-primary');
                         this.classList.add('btn-success');
                         
-                        // Show a toast notification (would require additional HTML)
+                    
                         alert('Event added to your schedule!');
                     } else {
                         this.innerHTML = '<i class="fas fa-plus"></i> Add';
@@ -618,32 +611,32 @@ function get_operating_system($user_agent) {
                 });
             });
             
-            // Feedback form submission
+      
             const feedbackForm = document.getElementById('feedbackForm');
             if (feedbackForm) {
                 feedbackForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // In a real app, this would submit via AJAX to a backend script
+                 
                     const sessionName = document.getElementById('sessionName').value;
                     const rating = document.querySelector('input[name="rating"]:checked')?.value;
                     const comment = document.getElementById('feedbackComment').value;
                     
-                    // Simple validation
+                    
                     if (!sessionName || !rating) {
                         alert('Please select a session and provide a rating.');
                         return;
                     }
                     
-                    // Simulated success message
+                  
                     alert('Thank you for your feedback! Your input helps us improve future Open Days.');
                     
-                    // Reset form
+                   
                     this.reset();
                 });
             }
             
-            // Simulated real-time notification
+           
             setTimeout(function() {
                 const newNotification = document.createElement('div');
                 newNotification.className = 'alert alert-warning alert-dismissible fade show';
@@ -654,10 +647,10 @@ function get_operating_system($user_agent) {
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 `;
                 
-                // Insert after existing alert
+              
                 const existingAlert = document.querySelector('.alert');
                 existingAlert.parentNode.insertBefore(newNotification, existingAlert.nextSibling);
-            }, 5000); // Show after 5 seconds
+            }, 5000); 
         });
     </script>
 </body>

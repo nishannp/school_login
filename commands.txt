@@ -1,0 +1,4 @@
+I will give permission to the folder to store the photos
+
+sudo chmod -R 777 /Applications/XAMPP/xamppfiles/htdocs/uploads/profile_photos/
+

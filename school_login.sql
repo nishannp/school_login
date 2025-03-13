@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 12, 2025 at 04:23 PM
+-- Generation Time: Mar 13, 2025 at 04:59 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -45,18 +45,6 @@ CREATE TABLE `guests` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `guests`
---
-
-INSERT INTO `guests` (`id`, `ip_address`, `user_agent`, `referer`, `page_url`, `visit_time`, `browser`, `device_type`, `os`, `session_id`, `visit_duration`, `country`, `region`, `city`, `created_at`) VALUES
-(1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:136.0) Gecko/20100101 Firefox/136.0', 'http://localhost/2025/school_login/index.php', '/2025/school_login/guest.php', '2025-03-12 16:10:27', 'Firefox', 'Desktop', 'Mac OS X', NULL, 0, NULL, NULL, NULL, '2025-03-12 15:10:27'),
-(2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:136.0) Gecko/20100101 Firefox/136.0', 'http://localhost/2025/school_login/index.php', '/2025/school_login/guest.php', '2025-03-12 16:11:01', 'Firefox', 'Desktop', 'Mac OS X', NULL, 0, NULL, NULL, NULL, '2025-03-12 15:11:01'),
-(3, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:136.0) Gecko/20100101 Firefox/136.0', 'http://localhost/2025/school_login/index.php', '/2025/school_login/guest.php', '2025-03-12 16:11:13', 'Firefox', 'Desktop', 'Mac OS X', NULL, 0, NULL, NULL, NULL, '2025-03-12 15:11:13'),
-(4, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:136.0) Gecko/20100101 Firefox/136.0', 'http://localhost/2025/school_login/index.php', '/2025/school_login/guest.php', '2025-03-12 16:11:22', 'Firefox', 'Desktop', 'Mac OS X', NULL, 0, NULL, NULL, NULL, '2025-03-12 15:11:22'),
-(5, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:136.0) Gecko/20100101 Firefox/136.0', 'http://localhost/2025/school_login/index.php', '/2025/school_login/guest.php', '2025-03-12 16:12:38', 'Firefox', 'Desktop', 'Mac OS X', NULL, 0, NULL, NULL, NULL, '2025-03-12 15:12:38'),
-(6, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:136.0) Gecko/20100101 Firefox/136.0', 'http://localhost/2025/school_login/signup.php', '/2025/school_login/guest.php', '2025-03-12 16:12:57', 'Firefox', 'Desktop', 'Mac OS X', NULL, 0, NULL, NULL, NULL, '2025-03-12 15:12:57');
-
 -- --------------------------------------------------------
 
 --
@@ -77,14 +65,6 @@ CREATE TABLE `users` (
   `profile_photo_original` varchar(255) DEFAULT NULL,
   `profile_photo_resized` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `first_name`, `last_name`, `phone_number`, `academic_interest`, `account_created_at`, `last_login`, `profile_photo_original`, `profile_photo_resized`) VALUES
-(1, 'nishan', 'nishan.snav@gmail.com', '$2y$10$Ou9JvMWcviEJUUOwyK5iE.6LKWBJp2cdqeMup0WX/mgyiK/Plpyqy', 'Nishan', 'Nepali', '9769961708', 'Arts', '2025-03-12 14:34:52', '2025-03-12 15:22:46', 'uploads/profile_photos/original_67d19b8c4802a.jpeg', 'uploads/profile_photos/resized_67d19b8c4802a.jpeg'),
-(2, 'suraj', 'suraj@gmail.com', '$2y$10$0T9FnWc7RVyHC7E9jTmZo.CgPUVU0FP0pa7LoRV.UVcEx0DiDXKjq', 'Suraj', 'Nepali', '937498435', 'Science', '2025-03-12 15:01:05', '2025-03-12 15:18:40', 'uploads/profile_photos/original_67d1a1b122725.jpeg', 'uploads/profile_photos/resized_67d1a1b122725.jpeg');
 
 --
 -- Indexes for dumped tables
@@ -117,13 +97,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `guests`
 --
 ALTER TABLE `guests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
