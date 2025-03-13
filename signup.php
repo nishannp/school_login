@@ -135,17 +135,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - University Open Day</title>
-    
-   
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-  
+    <title>Sign Up - Campus Connect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+<link rel="manifest" href="favicon_/site.webmanifest">
     <style>
         :root {
             --primary-color: #4e54c8;
@@ -308,7 +306,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         
         .image-content {
-            height: 100%;
+            height: 60%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -541,7 +539,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             
             .container {
-                margin: 20px;
+                margin: 0px;
             }
             
             .form-side {
@@ -560,6 +558,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         
         @media (max-width: 575.98px) {
+            .image-content {
+                height: 100%;
+            }
             .signup-container {
                 max-width: 95%;
                 margin: 10px;
@@ -636,8 +637,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          
             <div class="col-lg-6 image-side">
                 <div class="image-content text-center">
+                        <img src="imgs/logo.png" alt="Campus Connect Logo" class="img-fluid mb-4" style="max-width: 180px; border-radius: 50%;">
                     <h1 class="display-4 mb-4">Welcome!</h1>
-                    <p>Join us for an incredible Open Day experience at our university.</p>
+                    <p>Join us for an incredible Campus Connect experience at our university.</p>
                     <p class="mt-4">Discover your future, meet our faculty, and explore our campus!</p>
                 </div>
             </div>
@@ -645,7 +647,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             <div class="col-lg-6 form-side">
                 <h2 class="form-title">Create an Account</h2>
-                <p class="form-subtitle">Sign up to explore our university's Open Day events and create your personalized schedule.</p>
+                <p class="form-subtitle">Sign up to explore our university's Campus Connect events and create your personalized schedule.</p>
                 <p class="form-note text-muted mb-3"><small>Fields marked with <span class="text-danger">*</span> are required.</small></p>
                 
                 <?php if (!empty($error)): ?>
@@ -783,10 +785,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p>By registering for an account, you agree to provide accurate and complete information about yourself. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</p>
                     
                     <h5>2. Privacy Policy</h5>
-                    <p>Your personal information will be handled in accordance with our Privacy Policy. We collect your information solely for the purpose of enhancing your Open Day experience.</p>
+                    <p>Your personal information will be handled in accordance with our Privacy Policy. We collect your information solely for the purpose of enhancing your Campus Connect experience.</p>
                     
                     <h5>3. App Usage</h5>
-                    <p>The University Open Day app is designed to help you navigate our campus and participate in events. Any misuse of the application is prohibited.</p>
+                    <p>The Campus Connect app is designed to help you navigate our campus and participate in events. Any misuse of the application is prohibited.</p>
                     
                     <h5>4. User Content</h5>
                     <p>Any content you submit, including feedback and comments, may be used by the university for improving future events.</p>

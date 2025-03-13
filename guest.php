@@ -146,7 +146,7 @@ $featured = [
 
 $faq = [
     [
-        'question' => 'What should I bring to Open Day?',
+        'question' => 'What should I bring to Campus Connect?',
         'answer' => 'We recommend bringing a notebook, water bottle, comfortable shoes for walking around campus, and a list of questions you might have about our programs or facilities.'
     ],
     [
@@ -173,12 +173,16 @@ $faq = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University Open Day</title>
+    <title>Guest - Campus Connect</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+<link rel="manifest" href="favicon_/site.webmanifest">
     
     <style>
         :root {
@@ -707,7 +711,7 @@ $faq = [
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <i class="fas fa-university me-2"></i>University Open Day
+                <i class="fas fa-university me-2"></i> Campus Connect
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -930,7 +934,7 @@ $faq = [
             <div class="row g-4">
                 <div class="col-lg-6">
                     <h2 class="section-title">Get in Touch</h2>
-                    <p class="mb-4">Have questions about Open Day or our programs? Contact us and we'll be happy to assist you.</p>
+                    <p class="mb-4">Have questions about Campus Connect or our programs? Contact us and we'll be happy to assist you.</p>
                     
                     <form id="contactForm">
                         <div class="mb-3">
@@ -1003,7 +1007,7 @@ $faq = [
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4">
-                    <h5>University Open Day</h5>
+                    <h5>Campus Connect</h5>
                     <p>Discover your future with us. Explore our campus, meet faculty and students, and find the perfect program for your academic journey.</p>
                     <div class="social-links mt-4">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1046,7 +1050,7 @@ $faq = [
             </div>
             <div class="text-center copyright">
                 <hr class="my-4">
-                <p>© 2025 University Open Day. All Rights Reserved.</p>
+                <p>© 2025 Campus Connect. All Rights Reserved.</p>
             </div>
         </div>
     </footer>

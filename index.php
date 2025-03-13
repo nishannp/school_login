@@ -53,17 +53,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - University Open Day</title>
-    
- 
+    <title>Login - University Campus Connect</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
- 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+<link rel="manifest" href="favicon_/site.webmanifest">
     <style>
         :root {
             --primary-color: #4e54c8;
@@ -549,18 +547,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="login-container">
             <div class="row">
                 
-                <div class="col-lg-6 image-side">
-                    <div class="image-content text-center">
-                        <h1 class="display-4 mb-4">Welcome Back!</h1>
-                        <p>Sign in to access your personalized Open Day experience.</p>
-                        <p class="mt-4">Explore events, connect with faculty, and discover your future!</p>
-                    </div>
-                </div>
+            <div class="col-lg-6 image-side">
+    <div class="image-content text-center">
+        <img src="imgs/logo.png" alt="Campus Connect Logo" class="img-fluid mb-4" style="max-width: 180px; border-radius: 50%;">
+        <h1 class="display-4 mb-4">Welcome Back!</h1>
+        <p>Sign in to access your personalized Campus Connect experience.</p>
+        <p class="mt-4">Explore events, connect with faculty, and discover your future!</p>
+    </div>
+</div>
                 
                 
                 <div class="col-lg-6 form-side">
                     <h2 class="form-title">Sign In</h2>
-                    <p class="form-subtitle">Access your account to explore our university's Open Day events.</p>
+                    <p class="form-subtitle">Access your account to explore our university's Campus Connect events.</p>
                     
                     <?php if (!empty($error)): ?>
                         <div class="alert alert-danger" role="alert">

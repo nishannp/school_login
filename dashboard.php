@@ -95,11 +95,15 @@ $user_events = [1, 3, 5];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - University Open Day</title>
+    <title>Dashboard - Campus Connect</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+<link rel="manifest" href="favicon_/site.webmanifest">
     
     <style>
         :root {
@@ -634,20 +638,22 @@ $user_events = [1, 3, 5];
         }
         
         .notification-badge {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 18px;
-            height: 18px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            font-size: 0.7rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-        }
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(50%, -50%);
+}
+
         
         @media (max-width: 991.98px) {
             .welcome-banner {
@@ -739,9 +745,11 @@ $user_events = [1, 3, 5];
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-university me-2"></i> University Open Day
-            </a>
+        <a class="navbar-brand d-flex align-items-center" href="dashboard.php">
+        <img src="imgs/logo.png" alt="University Logo" height="60" class="me-2" style="width: 60px; border-radius: 50%; object-fit: cover;">
+
+    <span> Campus Connect</span>
+</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -796,7 +804,7 @@ $user_events = [1, 3, 5];
     </nav>
     <div class="welcome-banner">
         <div class="container">
-            <h1 class="welcome-title">Welcome to University Open Day, <?php echo $user['first_name']; ?>!</h1>
+            <h1 class="welcome-title">Welcome to Campus Connect, <?php echo $user['first_name']; ?>!</h1>
             <p class="welcome-subtitle">Explore our campus, meet faculty members, and discover what makes our university special. Create your personalized schedule for the perfect visit experience.</p>
             <a href="#events" class="btn btn-light welcome-btn">
                 <i class="fas fa-calendar-alt me-2"></i> Browse Events
@@ -805,9 +813,8 @@ $user_events = [1, 3, 5];
     </div>
     
     <div class="container">
-        <!-- Countdown Section -->
         <div class="countdown-container">
-            <h2 class="countdown-title">Open Day Begins In</h2>
+            <h2 class="countdown-title">Campus Connect Begins In</h2>
             <div class="countdown">
                 <div class="countdown-item">
                     <div class="countdown-value" id="days">14</div>
@@ -984,7 +991,7 @@ $user_events = [1, 3, 5];
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-car me-2"></i> Parking Information</h5>
-                            <p class="card-text">Visitor parking is available in the Main Campus Garage. The cost is $5 for the entire day with your Open Day registration.</p>
+                            <p class="card-text">Visitor parking is available in the Main Campus Garage. The cost is $5 for the entire day with your Campus Connect registration.</p>
                         </div>
                     </div>
                 </div>
@@ -1014,7 +1021,7 @@ $user_events = [1, 3, 5];
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <div class="footer-brand">
-                        <i class="fas fa-university me-2"></i> University Open Day
+                        <i class="fas fa-university me-2"></i> Campus Connect
                     </div>
                     <p class="footer-text">Experience campus life, meet faculty and students, and discover what makes our university special.</p>
                     <div class="footer-social">
@@ -1061,7 +1068,7 @@ $user_events = [1, 3, 5];
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <?php echo date('Y'); ?> University Open Day. All rights reserved.</p>
+                <p>&copy; <?php echo date('Y'); ?> Campus Connect. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1087,7 +1094,7 @@ $user_events = [1, 3, 5];
                                 <h6 class="mb-1">Registration Confirmation</h6>
                                 <small>1 day ago</small>
                             </div>
-                            <p class="mb-1">Your registration for University Open Day has been confirmed.</p>
+                            <p class="mb-1">Your registration for Campus Connect has been confirmed.</p>
                         </a>
                         <a href="#" class="list-group-item list-group-item-action">
                             <div class="d-flex w-100 justify-content-between">
