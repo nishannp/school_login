@@ -810,7 +810,7 @@ $formatted_description = nl2br(htmlspecialchars($event['description']));
                                     <div><i class="far fa-calendar-alt"></i> <?php echo htmlspecialchars($similar['short_date_time']); ?></div>
                                     <div><i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars($similar['location']); ?></div>
                                 </div>
-                                <a href="event-details.php?id=<?php echo $similar['event_id']; ?>" class="btn-details">View Details</a>
+                                <a href="event_details.php?id=<?php echo $similar['event_id']; ?>" class="btn-details">View Details</a>
                             </div>
                         </div>
                         <?php endforeach; ?>
