@@ -29,6 +29,7 @@
             overflow-x: hidden;
         }
 
+        
         .campus-logo {
             max-height: 50px;
             margin-right: 10px;

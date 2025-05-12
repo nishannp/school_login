@@ -2,6 +2,8 @@
 session_start();
 require_once 'config.php';
 
+
+
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     header("Location: index.php");
     exit;

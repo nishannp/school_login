@@ -2,6 +2,7 @@
 
 require_once 'config.php';
 
+// we will check for the user_id if we didn't find user id then we will redirect user to index.php
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     header("Location: index.php");
     exit;

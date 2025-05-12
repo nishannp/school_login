@@ -4,6 +4,7 @@ require_once '../config.php';
 
 $pageTitle = "Manage Events";
 
+
 // Delete Event
 if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
     $deleteId = $_GET['delete'];

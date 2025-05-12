@@ -1,6 +1,7 @@
 <?php
 require_once 'config.php';
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $value = trim($_POST['value']);
     $type = $_POST['type'];

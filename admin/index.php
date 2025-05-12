@@ -1,7 +1,9 @@
 <?php
 session_start();
+
 require_once '../config.php';
 $loginError = '';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $usernameOrEmail = $_POST['usernameOrEmail'];
 $password = $_POST['password'];

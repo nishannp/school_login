@@ -3,7 +3,9 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "school_login";
+$dbname = "school_login"; 
+
+//we have to change these in production...
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

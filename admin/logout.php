@@ -6,6 +6,7 @@ if (!isset($_SESSION['admin_id'])) {
     exit();
 }
 
+
 $username = isset($_SESSION['admin_username']) ? $_SESSION['admin_username'] : '';
 
 $confirmed = isset($_GET['confirm']) && $_GET['confirm'] == 'yes';

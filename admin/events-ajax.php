@@ -2,6 +2,7 @@
 
 require_once '../config.php';
 
+
 // Sorting and Ordering
 $orderBy = isset($_GET['orderby']) ? $_GET['orderby'] : 'event_date';
 $order = isset($_GET['order']) ? $_GET['order'] : 'ASC';
