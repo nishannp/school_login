@@ -3,7 +3,6 @@ session_start();
 
 require_once 'config.php';
 
-// Enable error reporting (TEMPORARY - remove in production!)
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -15,7 +14,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in']) || $_SESSION[
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch user's preferences (if any) -  Create this table if you haven't!
+
 $user_prefs_query = "SELECT default_map_location, default_map_zoom FROM user_preferences WHERE user_id = ?";
 $user_prefs_stmt = $conn->prepare($user_prefs_query);
 if ($user_prefs_stmt) { // Check if prepare was successful
@@ -25,7 +24,7 @@ if ($user_prefs_stmt) { // Check if prepare was successful
     $user_prefs = $user_prefs_result->fetch_assoc();
     $user_prefs_stmt->close();
 } else {
-    // Handle prepare failure (e.g., log the error)
+  
     error_log("Prepare failed for user_prefs_query: " . $conn->error);
     $user_prefs = null; // Set to null to avoid undefined variable errors
 }
